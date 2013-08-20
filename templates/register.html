@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h2>Register new account</h2>
+  <form action="{{ url_for('register') }}" method=post class=add-entry>
+  <dl>
+    <dt>Username:
+    <dd><input type=text name=username value="{{ user.USERNAME }}">
+    <dt>Enabled:
+    <dd><input type=checkbox name=enabled {{ "CHECKED" if user.ENABLED }}>
+    <dt>Description:
+    <dd><input type=text size=30 name=description  value="{{ user.DESCRIPTION }}">
+    <dt>New Password:
+    <dd><input type=password name=new1>
+    <dt>New Password(again):
+    <dd><input type=password name=new2>
+    <br/>
+    <br/>
+    <dd><input type=submit name=doit value=Create> <input type=submit name=doit value=Cancel>
+  </dl>
+</form>
+{% endblock %}
+
+

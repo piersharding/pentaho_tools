@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+    <form action="{{ url_for('add_group') }}" method=post class=add-entry>
+      <dl>
+        <dt>Group:
+        <dd><input type=text size=30 name=group>
+        <dt>Description:
+        <dd><input type=text size=30 name=description>
+        <dd><input type=submit value=Create>
+      </dl>
+    </form>
+  <ul class=entries>
+  {% for group in groups %}
+    <li><span class="item"><a href="{{ url_for('edit_group', group=group.AUTHORITY) }}">{{ group.AUTHORITY }}</a></span> {{ group.DESCRIPTION|safe }} <a href="{{ url_for('delete_group', group=group.AUTHORITY) }}"><img src="{{ url_for('static', filename='delete.png') }}"/></a></li>
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em></li>
+  {% endfor %}
+  </ul>
+{% endblock %}

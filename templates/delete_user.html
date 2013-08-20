@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+    <h2>Do you really want to delete this user?</h2>
+    <form action="{{ url_for('delete_user', user=user.USERNAME) }}" method=post class=add-entry>
+      <dl>
+        <dt>User:
+        <dd><span class="item">{{ user.USERNAME }}</span>
+        <dt>Description:
+        <dd>{{ user.DESCRIPTION|safe }}
+        <br/>
+        <br/>
+        <dd><input type=submit name=doit value=Delete> <input type=submit name=doit value=Cancel>
+      </dl>
+    </form>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Edit account</h2>
+    <form action="{{ url_for('edit_user', user=user.USERNAME) }}" method=post class=add-entry>
+      <dl>
+        <dt>Username:
+        <dd><span class="item">{{ user.USERNAME }}</span>
+        <dt>Enabled:
+        <dd><input type=checkbox name=enabled {{ "CHECKED" if user.ENABLED }}>
+        <dt>Description:
+        <dd><input type=text size=30 name=description value="{{ user.DESCRIPTION|safe }}">
+        <dt>New Password:
+        <dd><input type=password name=new1 value="" autocomplete='off'>
+        <dt>New Password(again):
+        <dd><input type=password name=new2 value="" autocomplete='off'>
+        <br/>
+      <ul class=entries>
+  {% for group in groups %}
+    <li><input type=checkbox name=groups value="{{ group.AUTHORITY }}" {{ "CHECKED" if group.enabled }}> <span class="item">{{ group.AUTHORITY }}</span> {{ group.DESCRIPTION|safe }}</li>
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em></li>
+  {% endfor %}
+  </ul>
+        <br/>
+        <dd><input type=submit name=doit value=Save> <input type=submit name=doit value=Cancel>
+      </dl>
+    </form>
+{% endblock %}

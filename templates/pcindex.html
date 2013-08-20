@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% if current_user.is_authenticated() %}
+<p>you can <a href="{{ url_for('changepasswd') }}">change your password</a>.
+{% endif %}
+{% endblock body %}

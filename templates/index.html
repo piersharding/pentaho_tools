@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% if current_user.is_authenticated() %}
+<p>select <a href="{{ url_for('users') }}">users</a> to manage accounts.
+<p>or <a href="{{ url_for('groups') }}">groups</a> to manage groups.
+{% endif %}
+{% endblock body %}
