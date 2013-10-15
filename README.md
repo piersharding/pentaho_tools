@@ -1,11 +1,11 @@
-pentaho_user_manager
-====================
+pentaho_user_manager suite
+===========================
 
 Copyright (C) Piers Harding 2013 - and beyond, All rights reserved
 
 Pentaho (http://community.pentaho.com/) user management interface - maintain users and ACL groups, and a standalone password changer
 
-Both applications are written using Python Flask http://flask.pocoo.org/ .  They are designed to 
+Both applications are written using Python Flask http://flask.pocoo.org/ .  They are designed to
 integrate with the MySQL or PostgreSQL backend of Pentaho to administer users in the Hibernate database.
 
 Dependencies are:
@@ -54,7 +54,39 @@ Configure each application something like the following (change directory locati
     </Directory>
   </VirtualHost>
 
-pentaho_user_manager is Copyright (c) 2013 - and beyond Piers Harding.
+
+PAM User Authentication
+========================
+pentaho_pam.py enables users to authenticate in PAM with their Pentaho user account
+
+The primary use of this is so Pentaho users can be the same as RStudio Server users
+
+The /etc/pam.d/rstudio config file should look like:
+
+auth requisite pam_succeed_if.so uid >= 500 quiet
+auth required pam_exec.so expose_authtok /path/to/pentaho_pam.py
+account required pam_unix.so
+
+
+PAM passes the user details in via environment variables eg:
+
+PAM_USER=piers
+PAM_TYPE=auth
+PAM_SERVICE=rstudio
+PWD=/
+
+
+The password is passed in on stdin and is terminated with a NULL
+
+UNIX user accounts with the same name as the Pentaho user account must still be created
+as this is required for the allocation of UID:GID, and OS quota management
+They can be created as non-login accounts though
+
+Change the SQLALCHEMY_DATABASE_URI to the appropriate string for your Pentaho setup
+
+
+
+The pentaho_user_manager suite is Copyright (c) 2013 - and beyond Piers Harding.
 It is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
 License as published by the Free Software Foundation; either
