@@ -90,6 +90,15 @@ if __name__ == "__main__":
     logger.info('Started pentaho_pam')
 
     # username must exist in the environment
+    if 'PAM_TYPE' in os.environ:
+        if not os.environ['PAM_TYPE'] == 'auth':
+            logger.error('login cannot continue as PAM_TYPE env var not set to "auth"')
+            sys.exit(1)
+    else:
+        logger.error('login cannot continue as PAM_TYPE env var not set')
+        sys.exit(1)
+
+    # username must exist in the environment
     if 'PAM_USER' in os.environ:
         username = os.environ['PAM_USER']
     else:
