@@ -1,7 +1,13 @@
-pentaho_user_manager suite
+pentaho_tools - admin tools
 ===========================
 
 Copyright (C) Piers Harding 2013 - and beyond, All rights reserved
+
+A variety of tools that I've used for integrating and managing Pentaho
+
+
+pentaho_user_manager
+====================
 
 Pentaho (http://community.pentaho.com/) user management interface - maintain users and ACL groups, and a standalone password changer
 
@@ -56,7 +62,7 @@ Configure each application something like the following (change directory locati
 
 
 PAM User Authentication
-========================
+=======================
 pentaho_pam.py enables users to authenticate in PAM with their Pentaho user account
 
 The primary use of this is so Pentaho users can be the same as RStudio Server users
@@ -85,8 +91,19 @@ They can be created as non-login accounts though
 Change the SQLALCHEMY_DATABASE_URI to the appropriate string for your Pentaho setup
 
 
+pentaho_configure.py
+====================
 
-The pentaho_user_manager suite is Copyright (c) 2013 - and beyond Piers Harding.
+Switch config of Pentaho BI server between different .cfg sets - be very careful with this!
+
+kettle_configure.py
+===================
+
+Switch config of Pentaho PDI/Kettle between different .cfg sets - be very careful with this!
+
+
+
+The pentaho_tools suite is Copyright (c) 2013 - and beyond Piers Harding.
 It is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
 License as published by the Free Software Foundation; either
