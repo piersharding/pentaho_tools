@@ -216,6 +216,7 @@ def main():
    #  '': 'pentaho-solutions/oti/metadata.xmi',
     config_files = {
     'tomcat': 'tomcat/webapps/pentaho/META-INF/context.xml',
+    'tomcat2': 'tomcat/conf/Catalina/localhost/pentaho.xml',
     'spring_xml': 'pentaho-solutions/system/applicationContext-spring-security-jdbc.xml',
     'mysql_hibernate': 'pentaho-solutions/system/hibernate/mysql5.hibernate.cfg.xml',
     'spring_properties': 'pentaho-solutions/system/applicationContext-spring-security-hibernate.properties',
@@ -367,6 +368,8 @@ def main():
 
         # overwrite tomcat config
         tomcat = options.base_dir + '/' + config_files['tomcat']
+        output_file(tomcat, config['tomcat']['xml'] + "\n")
+        tomcat = options.base_dir + '/' + config_files['tomcat2']
         output_file(tomcat, config['tomcat']['xml'] + "\n")
 
         # update spring bean config
