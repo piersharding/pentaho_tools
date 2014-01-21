@@ -3,6 +3,9 @@
 # C extensions
 *.so
 
+# shellscripts
+*.sh
+
 # Packages
 *.egg
 *.egg-info
