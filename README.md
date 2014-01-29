@@ -1,9 +1,22 @@
 pentaho_tools - admin tools
 ===========================
 
-Copyright (C) Piers Harding 2013 - and beyond, All rights reserved
+Copyright (C) Piers Harding 2013, 1014 - and beyond, All rights reserved
 
 A variety of tools that I've used for integrating and managing Pentaho
+    * separate applications for maintaining users and passwords for Pentaho BI Server 4.8
+    * PAM authentication module to authenticate users against the Pentaho hibernate database - useful for integration with RStudio Server
+    * Pentaho configuration tools for updating data source, schema and metadata config from the command line (alpha)
+    * Run Saiku Adhoc reporting queries from the command line and integrate them with Pentaho PDI and/or scheduling and emailing
+
+
+pentaho_saiku_adhoc_run.py
+==========================
+
+Run Saiku Adhoc reports, and Analytics queries (http://meteorite.bi/saiku) from the command line.  Use pentaho_saiku_adhoc_run.py -h to discover the options.  This runs bookmarked (saved) reports by poking the Saiu Adhoc reporting Rest API.
+
+This can be used sample PDI Job/Transformation steps in the /email-saiku directory, and the .xaction example provided shows how reports can be
+scheduled from within Pentaho BI 4.8.  Refer to http://www.prashantraju.com/2010/03/emailing-reports-from-the-pentaho-user-console/ for general instructions on setting up schedules and emailing - the emailing for these tools is defined in the PDI job step.
 
 
 pentaho_user_manager
@@ -103,7 +116,7 @@ Switch config of Pentaho PDI/Kettle between different .cfg sets - be very carefu
 
 
 
-The pentaho_tools suite is Copyright (c) 2013 - and beyond Piers Harding.
+The pentaho_tools suite is Copyright (c) 2014 - and beyond Piers Harding.
 It is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
 License as published by the Free Software Foundation; either
